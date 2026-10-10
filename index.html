@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Hub — কাউন্টডাউন হাব</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">⏳</div>
+      <div>
+        <h1 data-i18n="appTitle">Countdown Hub</h1>
+        <p class="tag" data-i18n="appTag">Never miss what matters</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="notifBtn" class="btn ghost" type="button" data-i18n="enableNotif">Enable reminders</button>
+      <button id="digitsBtn" class="btn ghost" type="button" title="Toggle Bengali digits">১২৩</button>
+      <button id="langBtn" class="btn ghost" type="button">বাংলা</button>
+    </div>
+  </header>
+
+  <div id="notifNote" class="note hidden" role="status"></div>
+
+  <!-- Hero: featured next event -->
+  <section id="hero" class="hero" aria-live="off">
+    <p class="hero-kicker" data-i18n="nextUp">Next up</p>
+    <div id="heroBody"></div>
+  </section>
+
+  <!-- Add event -->
+  <section class="card">
+    <h2 data-i18n="addEvent">Add event</h2>
+    <form id="addForm" novalidate>
+      <div class="grid2">
+        <label class="field">
+          <span data-i18n="evName">Event name</span>
+          <input id="fName" type="text" maxlength="80" data-i18n-ph="evNamePh" placeholder="e.g. Eid-ul-Fitr" autocomplete="off">
+        </label>
+        <label class="field">
+          <span data-i18n="evDate">Date &amp; time</span>
+          <input id="fDate" type="datetime-local">
+        </label>
+      </div>
+      <div class="grid2">
+        <label class="field">
+          <span data-i18n="color">Color</span>
+          <div id="colorRow" class="swatches" role="radiogroup" aria-label="color"></div>
+        </label>
+        <label class="field">
+          <span data-i18n="reminder">Reminder</span>
+          <select id="fReminder">
+            <option value="none" data-i18n="remNone">No reminder</option>
+            <option value="day" data-i18n="remDay">1 day before</option>
+            <option value="hour" data-i18n="remHour">1 hour before</option>
+          </select>
+        </label>
+      </div>
+      <label class="check">
+        <input id="fYearly" type="checkbox">
+        <span data-i18n="repeatYearly">Repeats every year</span>
+      </label>
+      <p id="formErr" class="err hidden" role="alert"></p>
+      <div class="row">
+        <button class="btn primary" type="submit" data-i18n="add">Add</button>
+        <button id="sampleBtn" class="btn ghost" type="button" data-i18n="sampleData">Load sample events</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Event list -->
+  <section class="card">
+    <div class="list-head">
+      <h2><span data-i18n="upcoming">Upcoming</span> · <span data-i18n="past">Past</span></h2>
+      <div class="row">
+        <button id="exportBtn" class="btn ghost sm" type="button" data-i18n="export">Export</button>
+        <button id="importBtn" class="btn ghost sm" type="button" data-i18n="import">Import</button>
+        <input id="importFile" type="file" accept="application/json,.json" class="hidden">
+        <button id="clearBtn" class="btn danger sm" type="button" data-i18n="clearAll">Clear all</button>
+      </div>
+    </div>
+    <div id="eventList" class="elist"></div>
+    <div id="emptyState" class="empty hidden">
+      <div class="empty-ico" aria-hidden="true">🎈</div>
+      <p><strong data-i18n="noEvents">No events yet</strong></p>
+      <p class="muted" data-i18n="noEventsHint">Add your first countdown below — a birthday, an exam, Eid, anything.</p>
+    </div>
+    <p id="importMsg" class="note-inline hidden" role="status"></p>
+  </section>
+
+  <footer class="foot">
+    <p>Countdown Hub · <span data-i18n="appTag">Never miss what matters</span> · 100% offline</p>
+  </footer>
+</div>
+
+<script src="js/countdown.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
